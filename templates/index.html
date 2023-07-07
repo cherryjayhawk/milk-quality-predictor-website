@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Kualitas Susu Sapi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="px-12 pt-8">
+        <h1 class="text-2xl text-gray-800 font-bold">
+            Selamat datang di website Prediksi Kualitas Susu Sapi
+        </h1>
+        <br>
+        <p>Silahkan masukkan parameter</p>
+    </div>
+    <div class="p-8">
+        <form method="POST" action="{{ url_for('prediksi') }}">
+            <table>
+                <td class="p-4">
+                    <label for="keasaman">Keasaman (pH)</label><br>
+                    <input name="keasaman" min="0" max="14" step="0.1" type="number" class="rounded border boder-solid border-gray-800"><br>
+                    
+                    <label for="temperatur">Temperatur (Celsius)</label><br>
+                    <input name="temperatur" min="0" max="100" type="number" class="rounded border boder-solid border-gray-800"><br>
+
+                    <label for="Warna">Warna</label><br>
+                    <input name="warna" min="0" max="255" type="number" class="rounded border boder-solid border-gray-800" placeholder="0 - 255">
+                    <p>* 0 = hitam, 255 = putih</p>
+                    
+                    <label for="rasa">Rasa</label><br>
+                    <select name="rasa" id="rasa" class="rounded border boder-solid border-gray-800"><br>
+                        <option value="1">Baik</option>
+                        <option value="0">Tidak Baik</option>
+                    </select><br>
+                </td>
+                <td class="p-4">
+                    <label for="bau">Bau</label><br>
+                    <select name="bau" id="bau" class="rounded border boder-solid border-gray-800"><br>
+                        <option value="1">Baik</option>
+                        <option value="0">Tidak Baik</option>
+                    </select><br>
+
+                    <label for="lemak">Lemak</label><br>
+                    <select name="lemak" id="lemak" class="rounded border boder-solid border-gray-800"><br>
+                        <option value="1">Baik</option>
+                        <option value="0">Tidak Baik</option>
+                    </select><br>
+
+                    <label for="kekentalan">Kekentalan</label><br>
+                    <select name="kekentalan" id="kekentalan" class="rounded border boder-solid border-gray-800"><br>
+                        <option value="1">Baik</option>
+                        <option value="0">Tidak Baik</option>
+                    </select><br>
+                </td>
+            </table>
+            <div class="px-4">
+                <label for="algoritma">Algoritma</label><br>
+                <select name="algoritma" id="algoritma" class="rounded border boder-solid border-gray-800"><br>
+                    <option value="1">KNN</option>
+                    <option value="2">SVM</option>
+                    <option value="3">Decission TREE</option>
+                </select><br>
+            </div>
+            <div class="p-4">
+                <button type="submit" class="p-4 bg-gray-800 text-white rounded">Hitung</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="px-12">
+        <label for="hasil">Hasil</label><br>
+        <input type="text" name="hasil" id="hasil" placeholder="" value="{{ prediction }}" disabled
+        class="rounded border boder-solid border-gray-800">
+    </div>
+
+</body>
+</html>
